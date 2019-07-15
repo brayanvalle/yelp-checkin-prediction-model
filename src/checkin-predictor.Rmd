@@ -1,0 +1,17 @@
+---
+title: "Prediction check-in model Yelp dataset"
+output: html_notebook
+---
+
+```{r}
+setwd("E:/Courses/R/yelp-checkin-prediction-model/src")
+```
+
+```{r}
+plot(cars)
+```
+
+```{r}
+
+```
+
