@@ -1,0 +1,57 @@
+---
+title: "Prediction check-in model Yelp dataset [Prediction - SVM]"
+output: html_notebook
+---
+
+```{r}
+setwd("E:/Courses/R/yelp-checkin-prediction-model/src/svm")
+```
+
+```{r}
+library(e1071)
+library (zoo)
+library (hydroGOF)
+```
+
+```{r}
+training_data <- read.csv("../../data/training_data.csv", header = TRUE , sep = ",")
+test_data <- read.csv("../../data/test_data.csv" , header = TRUE , sep = ",")
+```
+
+```{r}
+print(c("training_data size", nrow(training_data)))
+print(c("test_data size", nrow(test_data)))
+```
+
+#SVM Model
+
+```{r}
+model <- svm(checkins ~ ., data=training_data )
+model
+
+```
+
+#Predictions with trained data
+```{r}
+pred_training <- predict(model , training_data)
+pred_training_t = data.frame(pred_training , training_data$checkins)
+```
+#Error
+```{r}
+p <- pred_training
+a <- training_data$checkins
+mae_R <- mae(p,a)
+rmse_R <- rmse(p,a)
+
+```
+```{r}
+print(c("mae_R", mae_R))
+print(c("rmse_R", rmse_R))
+```
+
+#Checking prediction with Test Data
+```{r}
+pred_test <- predict(model , test_data)
+pred_test_t = data.frame(pred_test , test_data$checkins)
+```
+

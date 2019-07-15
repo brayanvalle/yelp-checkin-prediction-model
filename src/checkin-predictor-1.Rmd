@@ -1,0 +1,83 @@
+---
+title: "Prediction check-in model Yelp dataset [Prediction]"
+output: html_notebook
+---
+#Install required libs
+
+```{r}
+install.packages("randomForest")
+```
+
+#Load required libs
+
+```{r}
+
+library(randomForest)
+library (zoo)
+library (hydroGOF)
+```
+
+#Load traning and test data
+
+```{r}
+
+training_data <- read.csv("../data/training_data.csv", header = TRUE , sep = ",")
+test_data <- read.csv("../data/test_data.csv" , header = TRUE , sep = ",")
+```
+#View data size
+
+```{r}
+print(c("training_data size", nrow(training_data)))
+print(c("test_data size", nrow(test_data)))
+```
+
+#Random forest model 
+```{r}
+training_data.rf <- randomForest(checkins ~ ., data=training_data)
+```
+
+#Prediction vector 
+```{r}
+training_data_pred.rf <- predict(training_data.rf , training_data)
+```
+
+#Dataframe of the prediction vector
+```{r}
+df<-data.frame(training_data.rf_pred)
+```
+
+```{r}
+df$checkins<-rownames(training_data$checkins)
+```
+
+```{r}
+alldata<-merge(training_data, df)
+```
+
+```{r}
+dataframe_subset <- data.frame(subset(alldata, select=c("checkins","checkins", "training_data.rf_pred"))) 
+dataframe_subset
+```
+
+```{r}
+plot(alldata$checkins, alldata$training_data.rf_pred)
+
+```
+
+
+```{r}
+abline(1,1)
+```
+
+```{r}
+x<-  training_data.rf_pred # Predicciones número de llegadas
+y<- as.integer(training_data$checkins) # Número de llegadas reales
+mae_R <- mae (x, y)
+rmse_R <- rmse (x, y)
+
+```
+
+```{r}
+print(c("mae_R", mae_R))
+print(c("rmse_R", rmse_R))
+```

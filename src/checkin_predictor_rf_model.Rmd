@@ -1,0 +1,102 @@
+---
+title: "Prediction check-in model Yelp dataset [Prediction]"
+output: html_notebook
+---
+
+```{r}
+setwd("E:/Courses/R/yelp-checkin-prediction-model/src/")
+```
+
+#Install required libs
+
+```{r}
+install.packages("e1071")
+install.packages("randomForest")
+```
+
+#Load required libs
+
+```{r}
+library(e1071)
+library(randomForest)
+library (zoo)
+library (hydroGOF)
+```
+
+
+#Load traning and test data
+
+```{r}
+
+training_data <- read.csv("../data/training_data.csv", header = TRUE , sep = ",")
+test_data <- read.csv("../data/test_data.csv" , header = TRUE , sep = ",")
+```
+#View data size
+
+```{r}
+print(c("training_data size", nrow(training_data)))
+print(c("test_data size", nrow(test_data)))
+```
+
+#Random forest model 
+```{r}
+training_data.rf <- randomForest(checkins ~ ., data=training_data)
+```
+
+#Prediction vector 
+```{r}
+training_data_pred <- predict(training_data.rf , training_data)
+```
+
+#Dataframe of the prediction vector
+```{r}
+df<-data.frame(training_data_pred)
+```
+
+```{r}
+df$checkins<-rownames(training_data$checkins)
+```
+
+```{r}
+alldata<-merge(training_data, df)
+```
+
+```{r}
+dataframe_subset <- data.frame(subset(alldata, select=c("checkins","checkins", "training_data_pred"))) 
+```
+
+```{r}
+plot(alldata$checkins, alldata$training_data.rf_pred)
+
+```
+
+
+```{r}
+abline(1,1)
+```
+```{r}
+training_data$checkins
+```
+
+```{r}
+x<-  training_data_pred
+y<- as.integer(training_data$checkins)
+mae_R <- mae (x, y)
+rmse_R <- rmse (x, y)
+
+```
+
+```{r}
+print(c("mae_R", mae_R))
+print(c("rmse_R", rmse_R))
+```
+
+
+```{r}
+
+datos_prueba_pred <- predict(training_data.rf, test_data)
+
+
+
+```
+

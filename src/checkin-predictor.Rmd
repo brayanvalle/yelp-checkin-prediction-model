@@ -37,7 +37,7 @@ filteredData <- filteredData %>% filter(city == "Phoenix")
 #Remove columns: [Row number, city, day_tile]
 
 ```{r}
-filteredData <- filteredData %>% select(stars , review_count , is_open , category ,week_day,hourofday,checkins)
+filteredData <- filteredData %>% select(stars , review_count , is_open ,week_day,hourofday,checkins)
 filteredData
 ```
 
@@ -45,6 +45,7 @@ filteredData
 ```{r}
 filteredData$week_day <-recode(filteredData$week_day,'Sun'=1, 'Mon'=2, 'Tue'=3, 'Wed'=4 , 'Thu'=5, 'Fri'=6,'Sat'=7)
 filteredData
+write.csv(filteredData , file ="../data/filtered_data.csv")
 
 ```
 #Select 70% for traning data
@@ -61,7 +62,7 @@ training_data <- filteredData[0:training_data_size,]
 #Save training data to a csv file
 
 ```{r}
-write.csv(training_data , file ="../data/traning_data.csv")
+write.csv(training_data , file ="../data/training_data.csv")
 ```
 #Get Test data
 ```{r}
@@ -72,5 +73,10 @@ test_data <- filteredData[(training_data_size+1):nrow(filteredData),]
 
 ```{r}
 write.csv(test_data , file ="../data/test_data.csv")
+```
+
+
+```{r}
+
 ```
 
