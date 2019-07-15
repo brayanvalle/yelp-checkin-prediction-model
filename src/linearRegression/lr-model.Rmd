@@ -68,6 +68,22 @@ df_pred_test <- data.frame(pred_checkins_test)
 ```
 
 ```{r}
-df_pred_test$checkins <-
+df_pred_test$checkins_real <- test_data$checkins
+```
+
+```{r}
+plot(df_pred_test$checkins_real, df_pred_test$pred_checkins_test, xlab="Real", ylab="Pred", col="Blue")
+
+abline(1,1, col="red")
+```
+```{r}
+p <- pred_checkins_test
+a <- as.integer(test_data$checkins)
+
+mae_R <- mae(p,a)
+rmse_R <- rmse(p,a)
+
+print(c("mae_R", mae_R))
+print(c("rmse_R", rmse_R))
 ```
 

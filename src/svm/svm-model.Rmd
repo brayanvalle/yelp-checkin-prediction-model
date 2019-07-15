@@ -12,7 +12,7 @@ library(e1071)
 library (zoo)
 library (hydroGOF)
 
-set.seed(100)
+set.seed(1000)
 ```
 
 ```{r}
@@ -64,10 +64,6 @@ rmse_R <- rmse(p1, a1)
 
 print(c("mae_R", mae_R))
 print(c("rmse_R", rmse_R))
-```
-
-```{r}
-table(real = test_data$checkins, pred = pred_test)
 ```
 
 

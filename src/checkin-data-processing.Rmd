@@ -32,12 +32,12 @@ filteredData
 
 #Selecting subset data for for all business in Phoenix city and Category = Restaurants
 ```{r}
-filteredData <- filteredData %>% filter(city == "Phoenix" & category == "Restaurants" & (hourofday > 16 & hourofday < 23) & (week_day == "Fri" || week_day == "Sat"))
+filteredData <- filteredData %>% filter(city == "Phoenix" & category == "Restaurants" & (hourofday > 12 & hourofday < 22) & (week_day == "Fri" || week_day == "Sat" || week_day == "Sun"))
 ```
 #Remove columns: [Row number, city, day_time , category]
 
 ```{r}
-filteredData <- filteredData %>% select(stars , review_count , is_open,week_day,hourofday,checkins)
+filteredData <- filteredData %>% select(stars, review_count, is_open,week_day,hourofday,checkins)
 filteredData
 ```
 

@@ -23,7 +23,7 @@ library (zoo)
 library (hydroGOF)
 ```
 ```{r}
-set.seed(100)
+set.seed(1000)
 ```
 
 
