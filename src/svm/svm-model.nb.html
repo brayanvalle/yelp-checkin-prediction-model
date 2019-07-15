@@ -297,7 +297,7 @@ test_data &lt;- read.csv(&quot;../../data/test_data.csv&quot; , header = TRUE , 
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubW9kZWxcbmBgYCJ9 -->
 <pre class="r"><code>model</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG5DYWxsOlxuc3ZtKGZvcm11bGEgPSBjaGVja2lucyB+IC4sIGRhdGEgPSB0cmFpbmluZ19kYXRhKVxuXG5cblBhcmFtZXRlcnM6XG4gICBTVk0tVHlwZTogIGVwcy1yZWdyZXNzaW9uIFxuIFNWTS1LZXJuZWw6ICByYWRpYWwgXG4gICAgICAgY29zdDogIDEgXG4gICAgICBnYW1tYTogIDAuMDY2NjY2NjcgXG4gICAgZXBzaWxvbjogIDAuMSBcblxuXG5OdW1iZXIgb2YgU3VwcG9ydCBWZWN0b3JzOiAgMTMzMVxuIn0= -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG5DYWxsOlxuc3ZtKGZvcm11bGEgPSBjaGVja2lucyB+IC4sIGRhdGEgPSB0cmFpbmluZ19kYXRhKVxuXG5cblBhcmFtZXRlcnM6XG4gICBTVk0tVHlwZTogIGVwcy1yZWdyZXNzaW9uIFxuIFNWTS1LZXJuZWw6ICByYWRpYWwgXG4gICAgICAgY29zdDogIDEgXG4gICAgICBnYW1tYTogIDAuMTY2NjY2NyBcbiAgICBlcHNpbG9uOiAgMC4xIFxuXG5cbk51bWJlciBvZiBTdXBwb3J0IFZlY3RvcnM6ICAxNTg5XG4ifQ== -->
 <pre><code>
 Call:
 svm(formula = checkins ~ ., data = training_data)
@@ -307,11 +307,11 @@ Parameters:
    SVM-Type:  eps-regression 
  SVM-Kernel:  radial 
        cost:  1 
-      gamma:  0.06666667 
+      gamma:  0.1666667 
     epsilon:  0.1 
 
 
-Number of Support Vectors:  1331</code></pre>
+Number of Support Vectors:  1589</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -342,14 +342,14 @@ rmse_R &lt;- rmse(p,a)</code></pre>
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJpbnQoYyhcIm1hZV9SXCIsIG1hZV9SKSlcbmBgYCJ9 -->
 <pre class="r"><code>print(c(&quot;mae_R&quot;, mae_R))</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwibWFlX1JcIiAgICAgICAgICAgICBcIjAuOTMxMTQ5OTYwNzc0NjU2XCJcbiJ9 -->
-<pre><code>[1] &quot;mae_R&quot;             &quot;0.931149960774656&quot;</code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwibWFlX1JcIiAgICAgICAgICAgIFwiMC45NDMyMjk1NTg1NzMzMVwiXG4ifQ== -->
+<pre><code>[1] &quot;mae_R&quot;            &quot;0.94322955857331&quot;</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJpbnQoYyhcInJtc2VfUlwiLCBybXNlX1IpKVxuYGBgIn0= -->
 <pre class="r"><code>print(c(&quot;rmse_R&quot;, rmse_R))</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwicm1zZV9SXCIgICAgICAgICAgIFwiNC45NTYzMDA2ODQ0OTQ5M1wiXG4ifQ== -->
-<pre><code>[1] &quot;rmse_R&quot;           &quot;4.95630068449493&quot;</code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwicm1zZV9SXCIgICAgICAgICAgIFwiNS4wNDA0OTcxODI5NDM0NVwiXG4ifQ== -->
+<pre><code>[1] &quot;rmse_R&quot;           &quot;5.04049718294345&quot;</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -358,12 +358,10 @@ rmse_R &lt;- rmse(p,a)</code></pre>
 <h1>Checking prediction with Test Data</h1>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJlZF90ZXN0IDwtIHByZWRpY3QobW9kZWwgLCB0ZXN0X2RhdGEpXG5gYGAifQ== -->
-<pre class="r"><code>pred_test &lt;- predict(model , test_data)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJlZF90ZXN0IDwtIHByZWRpY3QobW9kZWwgLCB0ZXN0X2RhdGEpXG5wcmVkX3Rlc3RfdCA9IGRhdGEuZnJhbWUocHJlZF90ZXN0ICwgdGVzdF9kYXRhJGNoZWNraW5zKVxuYGBgIn0= -->
+<pre class="r"><code>pred_test &lt;- predict(model , test_data)
+pred_test_t = data.frame(pred_test , test_data$checkins)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiRXJyb3IgaW4gcHJlZGljdC5zdm0obW9kZWwsIHRlc3RfZGF0YSkgOiB0ZXN0IGRhdGEgZG9lcyBub3QgbWF0Y2ggbW9kZWwgIVxuIn0= -->
-<pre><code>Error in predict.svm(model, test_data) : test data does not match model !</code></pre>
-<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->

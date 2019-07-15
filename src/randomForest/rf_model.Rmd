@@ -22,6 +22,9 @@ library(randomForest)
 library (zoo)
 library (hydroGOF)
 ```
+```{r}
+set.seed(100)
+```
 
 
 #Load traning and test data
@@ -66,13 +69,13 @@ dataframe_subset <- data.frame(subset(alldata, select=c("checkins","checkins", "
 ```
 
 ```{r}
-plot(alldata$checkins, alldata$training_data.rf_pred)
+
 
 ```
 
 
 ```{r}
-abline(1,1)
+
 ```
 ```{r}
 training_data$checkins
@@ -90,13 +93,40 @@ rmse_R <- rmse (x, y)
 print(c("mae_R", mae_R))
 print(c("rmse_R", rmse_R))
 ```
-
+#Test data
 
 ```{r}
+test_data_pred <- predict(training_data.rf, test_data)
 
-datos_prueba_pred <- predict(training_data.rf, test_data)
+```
+Data frame from pred vector
+```{r}
+df <- data.frame(test_data_pred)
+```
 
+Add a colum to dataset with checkins
+```{r}
+df$checkins <- rownames(test_data$checkins)
+```
+New datframe with checkins pred
+```{r}
+all_data <- merge(test_data , df)
+```
+Data frame containing checkin model with real and predic values
+```{r}
+dataframe_subset <- data.frame(subset(all_data , select =c("checkins" , "checkins" , "test_data_pred")))
+```
 
+Error
 
+```{r}
+x<-  test_data_pred
+y<- as.integer(test_data$checkins)
+mae_R <- mae (x, y)
+rmse_R <- rmse (x, y)
+```
+```{r}
+print(c("mae_R", mae_R))
+print(c("rmse_R", rmse_R))
 ```
 
