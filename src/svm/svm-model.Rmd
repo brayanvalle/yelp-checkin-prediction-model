@@ -4,13 +4,15 @@ output: html_notebook
 ---
 
 ```{r}
-setwd("E:/Courses/R/yelp-checkin-prediction-model/src/svm")
+setwd("E:/Courses/R/yelp-checkin-prediction-model/src/svm/")
 ```
 
 ```{r}
 library(e1071)
 library (zoo)
 library (hydroGOF)
+
+set.seed(100)
 ```
 
 ```{r}
@@ -27,31 +29,45 @@ print(c("test_data size", nrow(test_data)))
 
 ```{r}
 model <- svm(checkins ~ ., data=training_data )
-model
-
+summary(model)
 ```
 
-#Predictions with trained data
+#Predictions with training data
 ```{r}
 pred_training <- predict(model , training_data)
 pred_training_t = data.frame(pred_training , training_data$checkins)
 ```
-#Error
+Error
 ```{r}
 p <- pred_training
 a <- training_data$checkins
 mae_R <- mae(p,a)
 rmse_R <- rmse(p,a)
 
-```
-```{r}
 print(c("mae_R", mae_R))
 print(c("rmse_R", rmse_R))
+
 ```
+
 
 #Checking prediction with Test Data
 ```{r}
 pred_test <- predict(model , test_data)
 pred_test_t = data.frame(pred_test , test_data$checkins)
 ```
+
+```{r}
+p1 <- pred_test
+a1 <- test_data$checkins
+mae_R <- mae(p1 , a1)
+rmse_R <- rmse(p1, a1)
+
+print(c("mae_R", mae_R))
+print(c("rmse_R", rmse_R))
+```
+
+```{r}
+table(real = test_data$checkins, pred = pred_test)
+```
+
 

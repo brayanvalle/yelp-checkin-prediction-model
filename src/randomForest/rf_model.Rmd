@@ -1,10 +1,10 @@
 ---
-title: "Prediction check-in model Yelp dataset [Prediction]"
+title: "Prediction check-in model Yelp dataset [Prediction - Random Forest]"
 output: html_notebook
 ---
 
 ```{r}
-setwd("E:/Courses/R/yelp-checkin-prediction-model/src/")
+setwd("E:/Courses/R/yelp-checkin-prediction-model/src/randomForest/")
 ```
 
 #Install required libs
@@ -31,8 +31,8 @@ set.seed(100)
 
 ```{r}
 
-training_data <- read.csv("../data/training_data.csv", header = TRUE , sep = ",")
-test_data <- read.csv("../data/test_data.csv" , header = TRUE , sep = ",")
+training_data <- read.csv("../../data/training_data.csv", header = TRUE , sep = ",")
+test_data <- read.csv("../../data/test_data.csv" , header = TRUE , sep = ",")
 ```
 #View data size
 
@@ -43,12 +43,12 @@ print(c("test_data size", nrow(test_data)))
 
 #Random forest model 
 ```{r}
-training_data.rf <- randomForest(checkins ~ ., data=training_data)
+model <- randomForest(checkins ~ ., data=training_data)
 ```
 
 #Prediction vector 
 ```{r}
-training_data_pred <- predict(training_data.rf , training_data)
+training_data_pred <- predict(model , training_data)
 ```
 
 #Dataframe of the prediction vector
@@ -69,17 +69,11 @@ dataframe_subset <- data.frame(subset(alldata, select=c("checkins","checkins", "
 ```
 
 ```{r}
-
-
-```
-
-
-```{r}
+plot(alldata$checkins, alldata$training_data_pred)
+abline(1,1)
 
 ```
-```{r}
-training_data$checkins
-```
+
 
 ```{r}
 x<-  training_data_pred
@@ -96,7 +90,7 @@ print(c("rmse_R", rmse_R))
 #Test data
 
 ```{r}
-test_data_pred <- predict(training_data.rf, test_data)
+test_data_pred <- predict(model, test_data)
 
 ```
 Data frame from pred vector
@@ -115,6 +109,13 @@ all_data <- merge(test_data , df)
 Data frame containing checkin model with real and predic values
 ```{r}
 dataframe_subset <- data.frame(subset(all_data , select =c("checkins" , "checkins" , "test_data_pred")))
+```
+
+Plot data
+
+```{r}
+plot(all_data$checkins, all_data$test_data_pred)
+abline(1,1)
 ```
 
 Error

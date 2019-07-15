@@ -30,14 +30,14 @@ filteredData
 ```
 
 
-#Selecting subset data for for all business in Phoenix city
+#Selecting subset data for for all business in Phoenix city and Category = Restaurants
 ```{r}
-filteredData <- filteredData %>% filter(city == "Phoenix")
+filteredData <- filteredData %>% filter(city == "Phoenix" & category == "Restaurants" & (hourofday > 16 & hourofday < 23) & (week_day == "Fri" || week_day == "Sat"))
 ```
-#Remove columns: [Row number, city, day_tile]
+#Remove columns: [Row number, city, day_time , category]
 
 ```{r}
-filteredData <- filteredData %>% select(stars , review_count , is_open ,week_day,hourofday,checkins)
+filteredData <- filteredData %>% select(stars , review_count , is_open,week_day,hourofday,checkins)
 filteredData
 ```
 
@@ -51,7 +51,7 @@ write.csv(filteredData , file ="../data/filtered_data.csv")
 #Select 70% for traning data
 ```{r}
 training_data_size <- ceiling(nrow(filteredData)*0.7)
-training_data_size
+print(c("training_data_size", training_data_size))
 ```
 
 #Get training data
@@ -75,8 +75,4 @@ test_data <- filteredData[(training_data_size+1):nrow(filteredData),]
 write.csv(test_data , file ="../data/test_data.csv")
 ```
 
-
-```{r}
-
-```
 

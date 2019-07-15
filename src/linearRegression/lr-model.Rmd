@@ -1,0 +1,73 @@
+---
+title: "Prediction check-in model Yelp dataset [Prediction - Linear Regression]"
+output: html_notebook
+---
+
+```{r}
+setwd("E:/Courses/R/yelp-checkin-prediction-model/src/linearRegression/")
+```
+
+```{r}
+library(e1071)
+library (zoo)
+library (hydroGOF)
+```
+
+```{r}
+training_data <- read.csv("../../data/training_data.csv", header = TRUE , sep = ",")
+test_data <- read.csv("../../data/test_data.csv" , header = TRUE , sep = ",")
+```
+
+```{r}
+print(c("training_data size", nrow(training_data)))
+print(c("test_data size", nrow(test_data)))
+```
+
+```{r}
+model <- lm(checkins ~ week_day + hourofday , data = training_data)
+summary(model)
+```
+
+```{r}
+pred_checkins <- predict(model , training_data)
+```
+
+```{r}
+df_pred <- data.frame(pred_checkins)
+```
+
+```{r}
+df_pred$checkin_real <- training_data$checkins
+```
+
+
+```{r}
+plot(df_pred$checkin_real , df_pred$pred_checkins , xlab="Real", ylab="Pred", col="Blue")
+abline(1,1, col="green")
+```
+
+Error
+```{r}
+p <- pred_checkins
+a <- as.integer(training_data$checkins)
+
+mae_R <- mae(p,a)
+rmse_R <- rmse(p,a)
+
+print(c("mae_R", mae_R))
+print(c("rmse_R", rmse_R))
+```
+
+#Checking prediction with Test Data
+```{r}
+pred_checkins_test<- predict(model , test_data)
+```
+
+```{r}
+df_pred_test <- data.frame(pred_checkins_test)
+```
+
+```{r}
+df_pred_test$checkins <-
+```
+
