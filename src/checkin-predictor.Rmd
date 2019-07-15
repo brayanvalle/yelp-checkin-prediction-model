@@ -1,6 +1,7 @@
 ---
 title: "Prediction check-in model Yelp dataset"
-output: rmarkdown::github_document
+#output: rmarkdown::github_document
+output: html_notebook
 ---
 
 
