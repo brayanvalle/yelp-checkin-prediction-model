@@ -2,16 +2,11 @@
 title: "Prediction check-in model Yelp dataset [Prediction - Random Forest]"
 output: html_notebook
 ---
-
+Taller final Aprendizaje de Maquinas
+Brayan Valle Jaramillo
+Laura Ospina
 ```{r}
 setwd("E:/Courses/R/yelp-checkin-prediction-model/src/randomForest/")
-```
-
-#Install required libs
-
-```{r}
-install.packages("e1071")
-install.packages("randomForest")
 ```
 
 #Load required libs

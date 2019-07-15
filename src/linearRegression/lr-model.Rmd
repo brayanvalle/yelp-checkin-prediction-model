@@ -2,7 +2,9 @@
 title: "Prediction check-in model Yelp dataset [Prediction - Linear Regression]"
 output: html_notebook
 ---
-
+Taller final Aprendizaje de Maquinas
+Brayan Valle Jaramillo
+Laura Ospina
 ```{r}
 setwd("E:/Courses/R/yelp-checkin-prediction-model/src/linearRegression/")
 ```

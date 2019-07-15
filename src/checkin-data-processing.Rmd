@@ -3,7 +3,9 @@ title: "Prediction check-in model Yelp dataset"
 #output: rmarkdown::github_document
 output: html_notebook
 ---
-
+Taller final Aprendizaje de Maquinas
+Brayan Valle Jaramillo
+Laura Ospina
 
 ```{r}
 setwd("E:/Courses/R/yelp-checkin-prediction-model/src/")
@@ -18,6 +20,8 @@ library(dplyr)
 #Read the dataset
 ```{r}
 fullData <- read.csv(file="../data/CheckinBusiness_DatosCompletos.csv", header=TRUE, sep=",")
+
+
 ```
 #View data
 ```{r}
@@ -38,7 +42,7 @@ filteredData <- filteredData %>% filter(city == "Phoenix" & category == "Restaur
 
 ```{r}
 filteredData <- filteredData %>% select(stars, review_count, is_open,week_day,hourofday,checkins)
-filteredData
+filteredData <-filteredData[sample(nrow(filteredData)),] 
 ```
 
 #Recoding Week day to the asociative day of week

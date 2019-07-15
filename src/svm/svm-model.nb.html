@@ -244,6 +244,7 @@ $(document).ready(function () {
 
 
 <!-- rnb-text-begin -->
+<p>Taller final Aprendizaje de Maquinas Brayan Valle Jaramillo Laura Ospina</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2V0d2QoXCJFOi9Db3Vyc2VzL1IveWVscC1jaGVja2luLXByZWRpY3Rpb24tbW9kZWwvc3JjL3N2bS9cIilcbmBgYCJ9 -->
@@ -293,7 +294,7 @@ test_data &lt;- read.csv(&quot;../../data/test_data.csv&quot; , header = TRUE , 
 <pre class="r"><code>model &lt;- svm(checkins ~ ., data=training_data )
 summary(model)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG5DYWxsOlxuc3ZtKGZvcm11bGEgPSBjaGVja2lucyB+IC4sIGRhdGEgPSB0cmFpbmluZ19kYXRhKVxuXG5cblBhcmFtZXRlcnM6XG4gICBTVk0tVHlwZTogIGVwcy1yZWdyZXNzaW9uIFxuIFNWTS1LZXJuZWw6ICByYWRpYWwgXG4gICAgICAgY29zdDogIDEgXG4gICAgICBnYW1tYTogIDAuMTY2NjY2NyBcbiAgICBlcHNpbG9uOiAgMC4xIFxuXG5cbk51bWJlciBvZiBTdXBwb3J0IFZlY3RvcnM6ICAxMDlcbiJ9 -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG5DYWxsOlxuc3ZtKGZvcm11bGEgPSBjaGVja2lucyB+IC4sIGRhdGEgPSB0cmFpbmluZ19kYXRhKVxuXG5cblBhcmFtZXRlcnM6XG4gICBTVk0tVHlwZTogIGVwcy1yZWdyZXNzaW9uIFxuIFNWTS1LZXJuZWw6ICByYWRpYWwgXG4gICAgICAgY29zdDogIDEgXG4gICAgICBnYW1tYTogIDAuMTY2NjY2NyBcbiAgICBlcHNpbG9uOiAgMC4xIFxuXG5cbk51bWJlciBvZiBTdXBwb3J0IFZlY3RvcnM6ICAxMDRcbiJ9 -->
 <pre><code>
 Call:
 svm(formula = checkins ~ ., data = training_data)
@@ -307,7 +308,7 @@ Parameters:
     epsilon:  0.1 
 
 
-Number of Support Vectors:  109</code></pre>
+Number of Support Vectors:  104</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -316,30 +317,29 @@ Number of Support Vectors:  109</code></pre>
 <h1>Predictions with training data</h1>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJlZF90cmFpbmluZyA8LSBwcmVkaWN0KG1vZGVsICwgdHJhaW5pbmdfZGF0YSlcbnByZWRfdHJhaW5pbmdfdCA9IGRhdGEuZnJhbWUocHJlZF90cmFpbmluZyAsIHRyYWluaW5nX2RhdGEkY2hlY2tpbnMpXG5gYGAifQ== -->
-<pre class="r"><code>pred_training &lt;- predict(model , training_data)
-pred_training_t = data.frame(pred_training , training_data$checkins)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJlZF90cmFpbmluZyA8LSBwcmVkaWN0KG1vZGVsICwgdHJhaW5pbmdfZGF0YSlcbmBgYCJ9 -->
+<pre class="r"><code>pred_training &lt;- predict(model , training_data)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>Error</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucCA8LSBwcmVkX3RyYWluaW5nXG5hIDwtIHRyYWluaW5nX2RhdGEkY2hlY2tpbnNcbm1hZV9SIDwtIG1hZShwLGEpXG5ybXNlX1IgPC0gcm1zZShwLGEpXG5wcmludChjKFwibWFlX1JcIiwgbWFlX1IpKVxuYGBgIn0= -->
-<pre class="r"><code>p &lt;- pred_training
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucCA8LSBhcy5pbnRlZ2VyKHByZWRfdHJhaW5pbmcpXG5hIDwtIHRyYWluaW5nX2RhdGEkY2hlY2tpbnNcbm1hZV9SIDwtIG1hZShwLGEpXG5ybXNlX1IgPC0gcm1zZShwLGEpXG5wcmludChjKFwibWFlX1JcIiwgbWFlX1IpKVxuYGBgIn0= -->
+<pre class="r"><code>p &lt;- as.integer(pred_training)
 a &lt;- training_data$checkins
 mae_R &lt;- mae(p,a)
 rmse_R &lt;- rmse(p,a)
 print(c(&quot;mae_R&quot;, mae_R))</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwibWFlX1JcIiAgICAgICAgICAgICBcIjAuOTYxNzA5OTAyOTY1OTc3XCJcbiJ9 -->
-<pre><code>[1] &quot;mae_R&quot;             &quot;0.961709902965977&quot;</code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwibWFlX1JcIiAgICAgICAgICAgICBcIjAuNjQ3MDU4ODIzNTI5NDEyXCJcbiJ9 -->
+<pre><code>[1] &quot;mae_R&quot;             &quot;0.647058823529412&quot;</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJpbnQoYyhcInJtc2VfUlwiLCBybXNlX1IpKVxuYGBgIn0= -->
 <pre class="r"><code>print(c(&quot;rmse_R&quot;, rmse_R))</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwicm1zZV9SXCIgICAgICAgICAgIFwiMi4wNTU2ODM2NTUzMDU2OFwiXG4ifQ== -->
-<pre><code>[1] &quot;rmse_R&quot;           &quot;2.05568365530568&quot;</code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwicm1zZV9SXCIgICAgICAgICAgIFwiMS43ODg2MDE0MTUyNDcyNFwiXG4ifQ== -->
+<pre><code>[1] &quot;rmse_R&quot;           &quot;1.78860141524724&quot;</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -348,36 +348,63 @@ print(c(&quot;mae_R&quot;, mae_R))</code></pre>
 <h1>Checking prediction with Test Data</h1>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJlZF90ZXN0IDwtIHByZWRpY3QobW9kZWwgLCB0ZXN0X2RhdGEpXG5wcmVkX3Rlc3RfdCA9IGRhdGEuZnJhbWUocHJlZF90ZXN0ICwgdGVzdF9kYXRhJGNoZWNraW5zKVxuYGBgIn0= -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJlZF90ZXN0IDwtIHByZWRpY3QobW9kZWwgLCB0ZXN0X2RhdGEpXG50ZXN0X2RhdGFcbmBgYCJ9 -->
 <pre class="r"><code>pred_test &lt;- predict(model , test_data)
-pred_test_t = data.frame(pred_test , test_data$checkins)</code></pre>
+test_data</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbImRhdGEuZnJhbWUiXSwibmNvbCI6NywibnJvdyI6OTR9LCJyZGYiOiJINHNJQUFBQUFBQUFCcTJYWjNjU1FSU0daNWVXUUFnMTl0NWJVTFAyR2pYMkhoczJjbGF5TVp3Z20wTXgrczMvNVA5VDM0Rjc0VEtIRFNudU9ROHpjOHM3ZDJhWFlabWRLVTdGaTNHbGxLMUNrWkN5UStpR2JYeFlLcXhHZGZ0RHFWQU9uUmhJZ2xMYnFSUGcwTkVnQXFJVU13SjBvaFpOZ0RIS0d3Y3BrQVlaa0FWYU53OG13QmF3Rld3RDI4RU9zQlBzQXJ2QkhyQVg3QVA3d1FGd0VCd0NoOEVSY0JRY0E4ZkJDWEFTbkFLVG9BQk9nelBnTEpnQ0RqZ0h6b01MNENLNEJDNkRLK0FxdUFhdWd4dmdKcGdHdDhCdGNBZk1nTHZnSHJnUEhvQ0g0QkY0REo2QXArQVplQTVlZ0pkZ0Zyd0NyOEViOEJhOEEwWHdIbndBSDhFbjhKbjJYZTloYVZydm9DN0ViTE1COW5DQVBTZ3VTQ2M3eEIra0Y2UWJWSmNaYjhhWk9tYmNzUHFDNWcycWI5ajg2MjAzbXo5TXo5eVB0ZTcvUnU5cmtIK2o5UnV0NnAwN1dVSi9iM1BVYW5ET1dMODdkR01TblppdUxVY0lqYll2MFl2dDVqbjlHdTAySzJKeXd1ZUl1V1VkdVY1dGZmbE9qM2FjSStZVDlmV3R4VEhXbHhOekRLaS82NU5hc2hhblA3WlAyK25wZC9Qa3VUOEl0VVpiVUs0S3lGTURiT3VkMDlULzM2eFcvMlppSmJ6LytuYzJUTGFvR05zMDV0OWdUWWhhanJNTW0yWG94WVJ1bEdJdDhvZEVUbFQxZnZ1andzOGFZYUZoaVhsWlM3NHJzTTBXdGNTb0h4SHp4QVJzRDRzKysyeWhFVEwwUTZKbTl0bWlIeEdhSE10cjQvM243MVJhZGQ1WmREOUY5bkd5NnpaUGJZYjZHWUxmZjdJaVAwbDlmaGVTWjB4YTZFOVFiSWEwa3lJbUwyeFpNUStmZVJtUlovcnlOR1libnpuOFhwWVdUQkJTZzMwcDBwZm5MTmNtYy9OaWpuRmpYYngvR2RHbXhmN3IreFYwRFRvejlEVzJTbXlDeG5aQXU5YUxuM1hadDR3WWM2eXYzQ3FhL0wza1N6K0hDVEVlTkFkZjVwb0h4YkhORG9nUituMS9DQ0kxOTV2WFVKMGJFK04vQ1VYMk5wcHV2VUdEc2JyM3ZlS3R6Slg5VnExSnRsaWxNZWN2ZXpVYWpxeDQzdExjdlB1VHhxT0xmcXZ1TC9RTUkrVkZyN3hVcVRXTU1rYnIva3FCUzlIUGgvMnJVMnpKckxkY2RSdGNMeHZqODI3VExTelVrWS9SSHlNbDVpODNLNzZlMHRaM0tHSWtXM1hEa0dyVmRDWHprK1hGVm0xcFV2K0RpSXNkVFZLL0pQcXh6cFQyWDVLS2tGVFVxMzJ0MUR5dXZlcCs4YW8wR01lSzJ3c3VMTmNyM2YyTXc5b29OUDJteTNIeHNsOWxTM3R0NnM4L2hQSzVEZWNOQUFBPSJ9 -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["X"],"name":[1],"type":["int"],"align":["right"]},{"label":["stars"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["review_count"],"name":[3],"type":["int"],"align":["right"]},{"label":["is_open"],"name":[4],"type":["int"],"align":["right"]},{"label":["week_day"],"name":[5],"type":["int"],"align":["right"]},{"label":["hourofday"],"name":[6],"type":["int"],"align":["right"]},{"label":["checkins"],"name":[7],"type":["int"],"align":["right"]}],"data":[{"1":"1","2":"4.0","3":"18","4":"1","5":"5","6":"19","7":"2"},{"1":"2","2":"4.0","3":"18","4":"1","5":"4","6":"18","7":"0"},{"1":"3","2":"4.0","3":"51","4":"1","5":"1","6":"16","7":"0"},{"1":"4","2":"4.5","3":"19","4":"1","5":"6","6":"21","7":"0"},{"1":"5","2":"4.0","3":"51","4":"1","5":"5","6":"18","7":"0"},{"1":"6","2":"4.0","3":"51","4":"1","5":"4","6":"15","7":"0"},{"1":"7","2":"2.5","3":"11","4":"0","5":"2","6":"19","7":"0"},{"1":"8","2":"4.0","3":"435","4":"1","5":"6","6":"14","7":"1"},{"1":"9","2":"4.0","3":"435","4":"1","5":"6","6":"16","7":"1"},{"1":"10","2":"4.0","3":"18","4":"1","5":"7","6":"14","7":"0"},{"1":"11","2":"4.0","3":"18","4":"1","5":"7","6":"20","7":"1"},{"1":"12","2":"2.5","3":"11","4":"0","5":"3","6":"14","7":"0"},{"1":"13","2":"4.5","3":"19","4":"1","5":"7","6":"17","7":"0"},{"1":"14","2":"4.0","3":"435","4":"1","5":"6","6":"20","7":"12"},{"1":"15","2":"4.0","3":"18","4":"1","5":"5","6":"17","7":"0"},{"1":"16","2":"4.5","3":"19","4":"1","5":"1","6":"17","7":"0"},{"1":"17","2":"4.5","3":"19","4":"1","5":"3","6":"15","7":"0"},{"1":"18","2":"4.0","3":"18","4":"1","5":"7","6":"16","7":"0"},{"1":"19","2":"4.0","3":"18","4":"1","5":"6","6":"18","7":"1"},{"1":"20","2":"4.0","3":"51","4":"1","5":"1","6":"21","7":"1"},{"1":"21","2":"4.0","3":"435","4":"1","5":"5","6":"18","7":"11"},{"1":"22","2":"2.5","3":"11","4":"0","5":"4","6":"13","7":"0"},{"1":"23","2":"2.5","3":"11","4":"0","5":"1","6":"21","7":"2"},{"1":"24","2":"4.5","3":"19","4":"1","5":"7","6":"19","7":"0"},{"1":"25","2":"4.0","3":"18","4":"1","5":"1","6":"20","7":"2"},{"1":"26","2":"2.5","3":"11","4":"0","5":"6","6":"19","7":"0"},{"1":"27","2":"4.0","3":"51","4":"1","5":"6","6":"18","7":"2"},{"1":"28","2":"4.0","3":"18","4":"1","5":"3","6":"19","7":"0"},{"1":"29","2":"2.5","3":"11","4":"0","5":"1","6":"16","7":"0"},{"1":"30","2":"4.5","3":"19","4":"1","5":"4","6":"15","7":"0"},{"1":"31","2":"2.5","3":"11","4":"0","5":"3","6":"19","7":"0"},{"1":"32","2":"4.0","3":"18","4":"1","5":"6","6":"21","7":"0"},{"1":"33","2":"4.5","3":"19","4":"1","5":"1","6":"13","7":"0"},{"1":"34","2":"4.0","3":"18","4":"1","5":"6","6":"17","7":"0"},{"1":"35","2":"4.5","3":"19","4":"1","5":"2","6":"14","7":"0"},{"1":"36","2":"2.5","3":"11","4":"0","5":"3","6":"13","7":"0"},{"1":"37","2":"4.5","3":"19","4":"1","5":"6","6":"19","7":"0"},{"1":"38","2":"4.0","3":"51","4":"1","5":"4","6":"16","7":"0"},{"1":"39","2":"4.0","3":"435","4":"1","5":"3","6":"20","7":"6"},{"1":"40","2":"4.0","3":"435","4":"1","5":"1","6":"14","7":"1"},{"1":"41","2":"2.5","3":"11","4":"0","5":"7","6":"13","7":"0"},{"1":"42","2":"4.0","3":"435","4":"1","5":"4","6":"18","7":"6"},{"1":"43","2":"4.0","3":"435","4":"1","5":"6","6":"15","7":"1"},{"1":"44","2":"4.5","3":"19","4":"1","5":"6","6":"16","7":"1"},{"1":"45","2":"4.0","3":"51","4":"1","5":"1","6":"19","7":"0"},{"1":"46","2":"2.5","3":"11","4":"0","5":"1","6":"19","7":"0"},{"1":"47","2":"2.5","3":"11","4":"0","5":"3","6":"17","7":"0"},{"1":"48","2":"4.0","3":"18","4":"1","5":"1","6":"17","7":"1"},{"1":"49","2":"4.5","3":"19","4":"1","5":"4","6":"14","7":"0"},{"1":"50","2":"4.0","3":"51","4":"1","5":"5","6":"15","7":"0"},{"1":"51","2":"4.0","3":"51","4":"1","5":"6","6":"16","7":"0"},{"1":"52","2":"4.0","3":"51","4":"1","5":"7","6":"19","7":"0"},{"1":"53","2":"4.0","3":"435","4":"1","5":"1","6":"19","7":"19"},{"1":"54","2":"4.0","3":"51","4":"1","5":"4","6":"20","7":"0"},{"1":"55","2":"4.0","3":"51","4":"1","5":"2","6":"16","7":"0"},{"1":"56","2":"4.0","3":"18","4":"1","5":"5","6":"16","7":"0"},{"1":"57","2":"4.5","3":"19","4":"1","5":"4","6":"19","7":"0"},{"1":"58","2":"4.0","3":"18","4":"1","5":"7","6":"18","7":"0"},{"1":"59","2":"4.0","3":"18","4":"1","5":"5","6":"18","7":"0"},{"1":"60","2":"4.0","3":"435","4":"1","5":"5","6":"20","7":"4"},{"1":"61","2":"4.0","3":"18","4":"1","5":"2","6":"21","7":"1"},{"1":"62","2":"4.0","3":"18","4":"1","5":"3","6":"16","7":"0"},{"1":"63","2":"4.0","3":"51","4":"1","5":"7","6":"16","7":"0"},{"1":"64","2":"4.0","3":"435","4":"1","5":"7","6":"16","7":"3"},{"1":"65","2":"4.0","3":"435","4":"1","5":"7","6":"21","7":"11"},{"1":"66","2":"4.0","3":"18","4":"1","5":"5","6":"21","7":"0"},{"1":"67","2":"4.5","3":"19","4":"1","5":"2","6":"15","7":"0"},{"1":"68","2":"4.0","3":"435","4":"1","5":"4","6":"16","7":"1"},{"1":"69","2":"4.5","3":"19","4":"1","5":"5","6":"19","7":"1"},{"1":"70","2":"2.5","3":"11","4":"0","5":"2","6":"16","7":"0"},{"1":"71","2":"2.5","3":"11","4":"0","5":"7","6":"16","7":"0"},{"1":"72","2":"4.5","3":"19","4":"1","5":"7","6":"15","7":"0"},{"1":"73","2":"4.0","3":"18","4":"1","5":"2","6":"14","7":"0"},{"1":"74","2":"2.5","3":"11","4":"0","5":"4","6":"19","7":"0"},{"1":"75","2":"4.0","3":"435","4":"1","5":"7","6":"19","7":"12"},{"1":"76","2":"4.5","3":"19","4":"1","5":"3","6":"18","7":"0"},{"1":"77","2":"4.0","3":"18","4":"1","5":"1","6":"16","7":"0"},{"1":"78","2":"4.0","3":"18","4":"1","5":"4","6":"20","7":"0"},{"1":"79","2":"4.0","3":"435","4":"1","5":"2","6":"16","7":"1"},{"1":"80","2":"4.0","3":"51","4":"1","5":"3","6":"21","7":"0"},{"1":"81","2":"2.5","3":"11","4":"0","5":"3","6":"21","7":"0"},{"1":"82","2":"2.5","3":"11","4":"0","5":"6","6":"20","7":"0"},{"1":"83","2":"4.0","3":"51","4":"1","5":"3","6":"18","7":"0"},{"1":"84","2":"4.0","3":"18","4":"1","5":"1","6":"18","7":"1"},{"1":"85","2":"2.5","3":"11","4":"0","5":"2","6":"14","7":"0"},{"1":"86","2":"4.0","3":"435","4":"1","5":"3","6":"21","7":"2"},{"1":"87","2":"4.0","3":"435","4":"1","5":"1","6":"13","7":"0"},{"1":"88","2":"4.0","3":"435","4":"1","5":"5","6":"17","7":"1"},{"1":"89","2":"4.0","3":"18","4":"1","5":"4","6":"16","7":"0"},{"1":"90","2":"4.0","3":"51","4":"1","5":"5","6":"14","7":"0"},{"1":"91","2":"4.5","3":"19","4":"1","5":"3","6":"17","7":"0"},{"1":"92","2":"4.0","3":"435","4":"1","5":"3","6":"14","7":"1"},{"1":"93","2":"4.0","3":"435","4":"1","5":"4","6":"17","7":"1"},{"1":"94","2":"4.0","3":"51","4":"1","5":"3","6":"16","7":"0"}],"options":{"columns":{"min":{},"max":[10],"total":[7]},"rows":{"min":[10],"max":[10],"total":[94]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucDEgPC0gcHJlZF90ZXN0XG5hMSA8LSB0ZXN0X2RhdGEkY2hlY2tpbnNcbm1hZV9SIDwtIG1hZShwMSAsIGExKVxucm1zZV9SIDwtIHJtc2UocDEsIGExKVxucHJpbnQoYyhcIm1hZV9SXCIsIG1hZV9SKSlcbmBgYCJ9 -->
-<pre class="r"><code>p1 &lt;- pred_test
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucDEgPC0gYXMuaW50ZWdlcihwcmVkX3Rlc3QpXG5hMSA8LSB0ZXN0X2RhdGEkY2hlY2tpbnNcbm1hZV9SIDwtIG1hZShwMSAsIGExKVxucm1zZV9SIDwtIHJtc2UocDEsIGExKVxucHJpbnQoYyhcIm1hZV9SXCIsIG1hZV9SKSlcbmBgYCJ9 -->
+<pre class="r"><code>p1 &lt;- as.integer(pred_test)
 a1 &lt;- test_data$checkins
 mae_R &lt;- mae(p1 , a1)
 rmse_R &lt;- rmse(p1, a1)
 print(c(&quot;mae_R&quot;, mae_R))</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwibWFlX1JcIiAgICAgICAgICAgICBcIjAuNTQ5NjQxNjQ5Mjg0ODc1XCJcbiJ9 -->
-<pre><code>[1] &quot;mae_R&quot;             &quot;0.549641649284875&quot;</code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwibWFlX1JcIiAgICAgICAgICAgICBcIjAuODI5Nzg3MjM0MDQyNTUzXCJcbiJ9 -->
+<pre><code>[1] &quot;mae_R&quot;             &quot;0.829787234042553&quot;</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJpbnQoYyhcInJtc2VfUlwiLCBybXNlX1IpKVxuYGBgIn0= -->
 <pre class="r"><code>print(c(&quot;rmse_R&quot;, rmse_R))</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwicm1zZV9SXCIgICAgICAgICAgICBcIjAuNzQwMzE2MzU1NDQ0NzY4XCJcbiJ9 -->
-<pre><code>[1] &quot;rmse_R&quot;            &quot;0.740316355444768&quot;</code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwicm1zZV9SXCIgICAgICAgICAgIFwiMi4yNTk3MzA3MzE0NjQxM1wiXG4ifQ== -->
+<pre><code>[1] &quot;rmse_R&quot;           &quot;2.25973073146413&quot;</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudGFibGUocmVhbCA9IHRlc3RfZGF0YVssIFwiY2hlY2tpbnNcIl0sIHByZWRpY2Npb24gPSBhcy5pbnRlZ2VyKHByZWRfdGVzdCkpXG5gYGAifQ== -->
+<pre class="r"><code>table(real = test_data[, &quot;checkins&quot;], prediccion = as.integer(pred_test))</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgIHByZWRpY2Npb25cbnJlYWwgIDAgIDEgIDIgIDMgIDQgIDUgIDZcbiAgMCAgNjIgIDEgIDAgIDAgIDAgIDAgIDBcbiAgMSAgMTAgIDMgIDIgIDIgIDAgIDAgIDBcbiAgMiAgIDQgIDAgIDAgIDAgIDAgIDAgIDFcbiAgMyAgIDAgIDAgIDEgIDAgIDAgIDAgIDBcbiAgNCAgIDAgIDAgIDAgIDAgIDAgIDEgIDBcbiAgNiAgIDAgIDAgIDAgIDEgIDEgIDAgIDBcbiAgMTEgIDAgIDAgIDAgIDEgIDAgIDAgIDFcbiAgMTIgIDAgIDAgIDAgIDAgIDAgIDIgIDBcbiAgMTkgIDAgIDAgIDAgIDAgIDEgIDAgIDBcbiJ9 -->
+<pre><code>    prediccion
+real  0  1  2  3  4  5  6
+  0  62  1  0  0  0  0  0
+  1  10  3  2  2  0  0  0
+  2   4  0  0  0  0  0  1
+  3   0  0  1  0  0  0  0
+  4   0  0  0  0  0  1  0
+  6   0  0  0  1  1  0  0
+  11  0  0  0  1  0  0  1
+  12  0  0  0  0  0  2  0
+  19  0  0  0  0  1  0  0</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 </div>
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIlByZWRpY3Rpb24gY2hlY2staW4gbW9kZWwgWWVscCBkYXRhc2V0IFtQcmVkaWN0aW9uIC0gU1ZNXSINCm91dHB1dDogaHRtbF9ub3RlYm9vaw0KLS0tDQoNCmBgYHtyfQ0Kc2V0d2QoIkU6L0NvdXJzZXMvUi95ZWxwLWNoZWNraW4tcHJlZGljdGlvbi1tb2RlbC9zcmMvc3ZtLyIpDQpgYGANCg0KYGBge3J9DQpsaWJyYXJ5KGUxMDcxKQ0KbGlicmFyeSAoem9vKQ0KbGlicmFyeSAoaHlkcm9HT0YpDQoNCnNldC5zZWVkKDEwMDApDQpgYGANCg0KYGBge3J9DQp0cmFpbmluZ19kYXRhIDwtIHJlYWQuY3N2KCIuLi8uLi9kYXRhL3RyYWluaW5nX2RhdGEuY3N2IiwgaGVhZGVyID0gVFJVRSAsIHNlcCA9ICIsIikNCnRlc3RfZGF0YSA8LSByZWFkLmNzdigiLi4vLi4vZGF0YS90ZXN0X2RhdGEuY3N2IiAsIGhlYWRlciA9IFRSVUUgLCBzZXAgPSAiLCIpDQpgYGANCg0KYGBge3J9DQpwcmludChjKCJ0cmFpbmluZ19kYXRhIHNpemUiLCBucm93KHRyYWluaW5nX2RhdGEpKSkNCnByaW50KGMoInRlc3RfZGF0YSBzaXplIiwgbnJvdyh0ZXN0X2RhdGEpKSkNCmBgYA0KDQojU1ZNIE1vZGVsDQoNCmBgYHtyfQ0KbW9kZWwgPC0gc3ZtKGNoZWNraW5zIH4gLiwgZGF0YT10cmFpbmluZ19kYXRhICkNCnN1bW1hcnkobW9kZWwpDQpgYGANCg0KI1ByZWRpY3Rpb25zIHdpdGggdHJhaW5pbmcgZGF0YQ0KYGBge3J9DQpwcmVkX3RyYWluaW5nIDwtIHByZWRpY3QobW9kZWwgLCB0cmFpbmluZ19kYXRhKQ0KcHJlZF90cmFpbmluZ190ID0gZGF0YS5mcmFtZShwcmVkX3RyYWluaW5nICwgdHJhaW5pbmdfZGF0YSRjaGVja2lucykNCmBgYA0KRXJyb3INCmBgYHtyfQ0KcCA8LSBwcmVkX3RyYWluaW5nDQphIDwtIHRyYWluaW5nX2RhdGEkY2hlY2tpbnMNCm1hZV9SIDwtIG1hZShwLGEpDQpybXNlX1IgPC0gcm1zZShwLGEpDQoNCnByaW50KGMoIm1hZV9SIiwgbWFlX1IpKQ0KcHJpbnQoYygicm1zZV9SIiwgcm1zZV9SKSkNCg0KYGBgDQoNCg0KI0NoZWNraW5nIHByZWRpY3Rpb24gd2l0aCBUZXN0IERhdGENCmBgYHtyfQ0KcHJlZF90ZXN0IDwtIHByZWRpY3QobW9kZWwgLCB0ZXN0X2RhdGEpDQpwcmVkX3Rlc3RfdCA9IGRhdGEuZnJhbWUocHJlZF90ZXN0ICwgdGVzdF9kYXRhJGNoZWNraW5zKQ0KYGBgDQoNCmBgYHtyfQ0KcDEgPC0gcHJlZF90ZXN0DQphMSA8LSB0ZXN0X2RhdGEkY2hlY2tpbnMNCm1hZV9SIDwtIG1hZShwMSAsIGExKQ0Kcm1zZV9SIDwtIHJtc2UocDEsIGExKQ0KDQpwcmludChjKCJtYWVfUiIsIG1hZV9SKSkNCnByaW50KGMoInJtc2VfUiIsIHJtc2VfUikpDQpgYGANCg0KDQo=</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIlByZWRpY3Rpb24gY2hlY2staW4gbW9kZWwgWWVscCBkYXRhc2V0IFtQcmVkaWN0aW9uIC0gU1ZNXSINCm91dHB1dDogaHRtbF9ub3RlYm9vaw0KLS0tDQpUYWxsZXIgZmluYWwgQXByZW5kaXphamUgZGUgTWFxdWluYXMNCkJyYXlhbiBWYWxsZSBKYXJhbWlsbG8NCkxhdXJhIE9zcGluYQ0KYGBge3J9DQpzZXR3ZCgiRTovQ291cnNlcy9SL3llbHAtY2hlY2tpbi1wcmVkaWN0aW9uLW1vZGVsL3NyYy9zdm0vIikNCmBgYA0KDQpgYGB7cn0NCmxpYnJhcnkoZTEwNzEpDQpsaWJyYXJ5ICh6b28pDQpsaWJyYXJ5IChoeWRyb0dPRikNCg0Kc2V0LnNlZWQoMTAwMCkNCmBgYA0KDQpgYGB7cn0NCnRyYWluaW5nX2RhdGEgPC0gcmVhZC5jc3YoIi4uLy4uL2RhdGEvdHJhaW5pbmdfZGF0YS5jc3YiLCBoZWFkZXIgPSBUUlVFICwgc2VwID0gIiwiKQ0KdGVzdF9kYXRhIDwtIHJlYWQuY3N2KCIuLi8uLi9kYXRhL3Rlc3RfZGF0YS5jc3YiICwgaGVhZGVyID0gVFJVRSAsIHNlcCA9ICIsIikNCmBgYA0KDQpgYGB7cn0NCnByaW50KGMoInRyYWluaW5nX2RhdGEgc2l6ZSIsIG5yb3codHJhaW5pbmdfZGF0YSkpKQ0KcHJpbnQoYygidGVzdF9kYXRhIHNpemUiLCBucm93KHRlc3RfZGF0YSkpKQ0KYGBgDQoNCiNTVk0gTW9kZWwNCg0KYGBge3J9DQptb2RlbCA8LSBzdm0oY2hlY2tpbnMgfiAuLCBkYXRhPXRyYWluaW5nX2RhdGEgKQ0Kc3VtbWFyeShtb2RlbCkNCmBgYA0KDQojUHJlZGljdGlvbnMgd2l0aCB0cmFpbmluZyBkYXRhDQpgYGB7cn0NCnByZWRfdHJhaW5pbmcgPC0gcHJlZGljdChtb2RlbCAsIHRyYWluaW5nX2RhdGEpDQpgYGANCkVycm9yDQpgYGB7cn0NCnAgPC0gYXMuaW50ZWdlcihwcmVkX3RyYWluaW5nKQ0KYSA8LSB0cmFpbmluZ19kYXRhJGNoZWNraW5zDQptYWVfUiA8LSBtYWUocCxhKQ0Kcm1zZV9SIDwtIHJtc2UocCxhKQ0KDQpwcmludChjKCJtYWVfUiIsIG1hZV9SKSkNCnByaW50KGMoInJtc2VfUiIsIHJtc2VfUikpDQoNCmBgYA0KDQoNCiNDaGVja2luZyBwcmVkaWN0aW9uIHdpdGggVGVzdCBEYXRhDQpgYGB7cn0NCnByZWRfdGVzdCA8LSBwcmVkaWN0KG1vZGVsICwgdGVzdF9kYXRhKQ0KDQp0ZXN0X2RhdGENCmBgYA0KDQpgYGB7cn0NCnAxIDwtIGFzLmludGVnZXIocHJlZF90ZXN0KQ0KYTEgPC0gdGVzdF9kYXRhJGNoZWNraW5zDQptYWVfUiA8LSBtYWUocDEgLCBhMSkNCnJtc2VfUiA8LSBybXNlKHAxLCBhMSkNCg0KcHJpbnQoYygibWFlX1IiLCBtYWVfUikpDQpwcmludChjKCJybXNlX1IiLCBybXNlX1IpKQ0KYGBgDQoNCmBgYHtyfQ0KdGFibGUocmVhbCA9IHRlc3RfZGF0YVssICJjaGVja2lucyJdLCBwcmVkaWNjaW9uID0gYXMuaW50ZWdlcihwcmVkX3Rlc3QpKQ0KYGBgDQoNCg==</div>
 
 
 

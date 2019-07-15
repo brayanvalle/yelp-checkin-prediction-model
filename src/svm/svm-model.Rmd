@@ -2,7 +2,9 @@
 title: "Prediction check-in model Yelp dataset [Prediction - SVM]"
 output: html_notebook
 ---
-
+Taller final Aprendizaje de Maquinas
+Brayan Valle Jaramillo
+Laura Ospina
 ```{r}
 setwd("E:/Courses/R/yelp-checkin-prediction-model/src/svm/")
 ```
@@ -35,11 +37,10 @@ summary(model)
 #Predictions with training data
 ```{r}
 pred_training <- predict(model , training_data)
-pred_training_t = data.frame(pred_training , training_data$checkins)
 ```
 Error
 ```{r}
-p <- pred_training
+p <- as.integer(pred_training)
 a <- training_data$checkins
 mae_R <- mae(p,a)
 rmse_R <- rmse(p,a)
@@ -53,11 +54,12 @@ print(c("rmse_R", rmse_R))
 #Checking prediction with Test Data
 ```{r}
 pred_test <- predict(model , test_data)
-pred_test_t = data.frame(pred_test , test_data$checkins)
+
+test_data
 ```
 
 ```{r}
-p1 <- pred_test
+p1 <- as.integer(pred_test)
 a1 <- test_data$checkins
 mae_R <- mae(p1 , a1)
 rmse_R <- rmse(p1, a1)
@@ -66,4 +68,7 @@ print(c("mae_R", mae_R))
 print(c("rmse_R", rmse_R))
 ```
 
+```{r}
+table(real = test_data[, "checkins"], prediccion = as.integer(pred_test))
+```
 
