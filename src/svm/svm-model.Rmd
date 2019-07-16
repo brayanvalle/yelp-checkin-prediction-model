@@ -51,7 +51,7 @@ print(c("rmse_R", rmse_R))
 ```
 
 
-#Checking prediction with Test Data
+#Check-in prediction with Test Data
 ```{r}
 pred_test <- predict(model , test_data)
 
